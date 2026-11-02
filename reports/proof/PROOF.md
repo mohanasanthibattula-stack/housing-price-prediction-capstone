@@ -24,7 +24,7 @@
 | **Feature Interpretability** | Permutation importance & Partial Dependence | `reports/figures/08_permutation_importance.png`, `reports/figures/09_partial_dependence_medinc.png` | `MedInc` accounts for 68% relative importance ($\Delta R^2 = -0.4704$), followed by spatial coordinates | **VERIFIED** |
 | **Jupyter Notebook** | End-to-end reproducible workflow with embedded plots | `notebooks/capstone.ipynb` | Executed top-to-bottom via `nbconvert` with zero warnings or errors (1.63 MB) | **VERIFIED** |
 | **Academic Whitepaper** | 8 to 12 page formal research report in PDF format | `report/Capstone_Research_Report.pdf` | **Exactly 10 pages** (Letter, 504 pt width, 9 embedded figures, 7 DOI-backed academic citations) | **VERIFIED** |
-| **Automated CI Workflow** | Headless GitHub Actions workflow on Python 3.12 | `.github/workflows/ci.yml` | Full pipeline execution (`nbconvert`, `build_report.py`, artifact validation) | **PENDING PUSH** |
+| **Automated CI Workflow** | Headless GitHub Actions workflow on Python 3.12 | `.github/workflows/ci.yml` | Full pipeline execution (`nbconvert`, `build_report.py`, artifact validation) — **Run ID 41432170789 PASSED (1m25s)** | **PASSED** |
 
 ---
 
@@ -102,4 +102,4 @@ Audited via `pymupdf` during execution of `report/build_report.py`:
   jupyter nbconvert --to notebook --execute --inplace notebooks/capstone.ipynb
   python report/build_report.py
   ```
-- **CI Run Status**: CI workflow configured under `.github/workflows/ci.yml`.
+- **CI Run Status**: CI workflow configured under `.github/workflows/ci.yml`. Verified run: [41432170789 (PASSED)](https://github.com/mohanasanthibattula-stack/housing-price-prediction-capstone/actions/runs/41432170789).
