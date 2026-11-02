@@ -1,0 +1,177 @@
+{
+  "dataset_metadata": {
+    "source": "1990 U.S. Census Bureau via Pace & Barry (1997)",
+    "total_samples": 20640,
+    "train_samples": 16512,
+    "test_samples": 4128,
+    "n_features": 8,
+    "features": [
+      "MedInc",
+      "HouseAge",
+      "AveRooms",
+      "AveBedrms",
+      "Population",
+      "AveOccup",
+      "Latitude",
+      "Longitude"
+    ],
+    "target": "MedHouseVal",
+    "capped_samples": 992,
+    "capped_percentage": 4.8062015503875966,
+    "mean_house_val_dollars": 206855.81690891474,
+    "median_house_val_dollars": 179700.0,
+    "std_house_val_dollars": 115395.61587441385,
+    "min_house_val_dollars": 14999.000000000002,
+    "max_house_val_dollars": 500000.99999999994
+  },
+  "model_comparison": {
+    "Dummy": {
+      "rmse_unit": 1.1448563543099792,
+      "mae_unit": 0.9060685490007149,
+      "r2": -0.00021908714592466794,
+      "mape_pct": 62.8861496325994,
+      "rmse_dollars": 114485.63543099792,
+      "mae_dollars": 90606.85490007148,
+      "best_params": "baseline_mean"
+    },
+    "Ridge": {
+      "rmse_unit": 0.745581327864371,
+      "mae_unit": 0.5332001145242604,
+      "r2": 0.5757877687878554,
+      "mape_pct": 31.952185136564438,
+      "rmse_dollars": 74558.1327864371,
+      "mae_dollars": 53320.01145242604,
+      "best_params": {
+        "regressor__alpha": "0.002231010801867922"
+      }
+    },
+    "RandomForest": {
+      "rmse_unit": 0.5047565878332031,
+      "mae_unit": 0.32937707675479283,
+      "r2": 0.8055727508040771,
+      "mape_pct": 19.099448982464192,
+      "rmse_dollars": 50475.65878332031,
+      "mae_dollars": 32937.70767547928,
+      "best_params": {
+        "regressor__max_depth": "16",
+        "regressor__max_features": "0.5290418060840998",
+        "regressor__min_samples_split": "9",
+        "regressor__n_estimators": "149"
+      }
+    },
+    "HistGradientBoosting": {
+      "rmse_unit": 0.4477443540238576,
+      "mae_unit": 0.2973326891551128,
+      "r2": 0.8470134058228445,
+      "mape_pct": 17.258253326822175,
+      "rmse_dollars": 44774.43540238576,
+      "mae_dollars": 29733.26891551128,
+      "best_params": {
+        "regressor__l2_regularization": "0.03148911647956861",
+        "regressor__learning_rate": "0.1785436060870726",
+        "regressor__max_iter": "206",
+        "regressor__max_leaf_nodes": "27",
+        "regressor__min_samples_leaf": "38"
+      }
+    }
+  },
+  "best_model": {
+    "name": "HistGradientBoosting",
+    "metrics": {
+      "rmse_unit": 0.4477443540238576,
+      "mae_unit": 0.2973326891551128,
+      "r2": 0.8470134058228445,
+      "mape_pct": 17.258253326822175,
+      "rmse_dollars": 44774.43540238576,
+      "mae_dollars": 29733.26891551128,
+      "best_params": {
+        "regressor__l2_regularization": "0.03148911647956861",
+        "regressor__learning_rate": "0.1785436060870726",
+        "regressor__max_iter": "206",
+        "regressor__max_leaf_nodes": "27",
+        "regressor__min_samples_leaf": "38"
+      }
+    },
+    "bootstrap_rmse_95ci": {
+      "n_bootstraps": 500,
+      "ci_lower_dollars": 42813.06678752353,
+      "ci_upper_dollars": 46463.41016115249,
+      "mean_bootstrap_rmse_dollars": 44730.61039287504,
+      "std_bootstrap_rmse_dollars": 980.0262018280292
+    },
+    "subgroups": {
+      "capped": {
+        "n_samples": 184,
+        "rmse_dollars": 87622.6580664219,
+        "mae_dollars": 59232.91145673908,
+        "mape_pct": 11.846559103313597
+      },
+      "uncapped": {
+        "n_samples": 3944,
+        "rmse_dollars": 41714.35851217285,
+        "mae_dollars": 28357.017843608155,
+        "mape_pct": 17.510725876803303
+      },
+      "value_bands": {
+        "< $150k": {
+          "n_samples": 1516,
+          "rmse_dollars": 32341.632637452556,
+          "mae_dollars": 21458.786582304194,
+          "mape_pct": 24.546770530961755
+        },
+        "$150k-$300k": {
+          "n_samples": 1861,
+          "rmse_dollars": 38369.3904092566,
+          "mae_dollars": 27278.792104343658,
+          "mape_pct": 13.012243183558331
+        },
+        "$300k-$500k": {
+          "n_samples": 567,
+          "rmse_dollars": 66896.63216602866,
+          "mae_dollars": 50339.90442722023,
+          "mape_pct": 13.463164318469417
+        },
+        "Capped ($500k)": {
+          "n_samples": 184,
+          "rmse_dollars": 87622.6580664219,
+          "mae_dollars": 59232.91145673908,
+          "mape_pct": 11.846559103313597
+        }
+      }
+    },
+    "permutation_importance": {
+      "MedInc": {
+        "mean_decrease_r2": 0.37694965144042636,
+        "std_decrease_r2": 0.010236925185138145
+      },
+      "HouseAge": {
+        "mean_decrease_r2": 0.043646067186108625,
+        "std_decrease_r2": 0.0030555616251500407
+      },
+      "AveRooms": {
+        "mean_decrease_r2": 0.07996588156646721,
+        "std_decrease_r2": 0.004655726734889702
+      },
+      "AveBedrms": {
+        "mean_decrease_r2": 0.007853935500419306,
+        "std_decrease_r2": 0.0014821275366276568
+      },
+      "Population": {
+        "mean_decrease_r2": 0.008496915279901674,
+        "std_decrease_r2": 0.000788689454814324
+      },
+      "AveOccup": {
+        "mean_decrease_r2": 0.14458922240811906,
+        "std_decrease_r2": 0.004112564986859656
+      },
+      "Latitude": {
+        "mean_decrease_r2": 1.145471629519744,
+        "std_decrease_r2": 0.023599033531277878
+      },
+      "Longitude": {
+        "mean_decrease_r2": 0.9803091220984432,
+        "std_decrease_r2": 0.011650403448668297
+      }
+    }
+  }
+}

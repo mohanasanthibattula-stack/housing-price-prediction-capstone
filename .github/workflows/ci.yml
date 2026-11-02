@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Execute Capstone Notebook & Build Report PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Capstone notebook
+        run: |
+          jupyter nbconvert --to notebook --execute --inplace notebooks/capstone.ipynb
+
+      - name: Build Research Report PDF
+        run: |
+          python report/build_report.py
+
+      - name: Verify generated artifacts
+        run: |
+          test -f report/Capstone_Research_Report.pdf || exit 1
+          test -f reports/results.json || exit 1
+          ls -la reports/figures/
